@@ -1,0 +1,15 @@
+There is no .NF macro for manpages.
+
+diff --git a/docs/libssh2_userauth_publickey.3 b/docs/libssh2_userauth_publickey.3
+index 31771af..c84062f 100644
+--- a/docs/libssh2_userauth_publickey.3
++++ b/docs/libssh2_userauth_publickey.3
+@@ -6,7 +6,7 @@ libssh2_userauth_publickey - authenticate using a callback function
+ .SH SYNOPSIS
+ #include <libssh2.h>
+ 
+-.NF
++.nf
+ int libssh2_userauth_publickey(LIBSSH2_SESSION *session,
+                                const char *user,
+                                const unsigned char *pubkeydata,
