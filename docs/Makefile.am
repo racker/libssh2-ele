@@ -25,8 +25,8 @@ dist_man_MANS = \
 	libssh2_channel_forward_listen.3 \
 	libssh2_channel_forward_listen_ex.3 \
 	libssh2_channel_free.3 \
-	libssh2_channel_get_exit_status.3 \
 	libssh2_channel_get_exit_signal.3 \
+	libssh2_channel_get_exit_status.3 \
 	libssh2_channel_handle_extended_data.3 \
 	libssh2_channel_handle_extended_data2.3 \
 	libssh2_channel_ignore_extended_data.3 \
@@ -61,10 +61,10 @@ dist_man_MANS = \
 	libssh2_channel_x11_req_ex.3 \
 	libssh2_exit.3 \
 	libssh2_free.3 \
-	libssh2_free_host_entry.3 \
-	libssh2_host_entry_match.3 \
 	libssh2_hostkey_hash.3 \
 	libssh2_init.3 \
+	libssh2_keepalive_config.3 \
+	libssh2_keepalive_send.3 \
 	libssh2_knownhost_add.3 \
 	libssh2_knownhost_addc.3 \
 	libssh2_knownhost_check.3 \
@@ -77,7 +77,6 @@ dist_man_MANS = \
 	libssh2_knownhost_readline.3 \
 	libssh2_knownhost_writefile.3 \
 	libssh2_knownhost_writeline.3 \
-	libssh2_new_host_entry.3 \
 	libssh2_poll.3 \
 	libssh2_poll_channel_read.3 \
 	libssh2_publickey_add.3 \
@@ -90,8 +89,8 @@ dist_man_MANS = \
 	libssh2_publickey_shutdown.3 \
 	libssh2_scp_recv.3 \
 	libssh2_scp_send.3 \
-	libssh2_scp_send_ex.3 \
 	libssh2_scp_send64.3 \
+	libssh2_scp_send_ex.3 \
 	libssh2_session_abstract.3 \
 	libssh2_session_block_directions.3 \
 	libssh2_session_callback_set.3 \
@@ -100,6 +99,7 @@ dist_man_MANS = \
 	libssh2_session_flag.3 \
 	libssh2_session_free.3 \
 	libssh2_session_get_blocking.3 \
+	libssh2_session_get_timeout.3 \
 	libssh2_session_hostkey.3 \
 	libssh2_session_init.3 \
 	libssh2_session_init_ex.3 \
@@ -108,6 +108,7 @@ dist_man_MANS = \
 	libssh2_session_method_pref.3 \
 	libssh2_session_methods.3 \
 	libssh2_session_set_blocking.3 \
+	libssh2_session_set_timeout.3 \
 	libssh2_session_startup.3 \
 	libssh2_sftp_close.3 \
 	libssh2_sftp_close_handle.3 \

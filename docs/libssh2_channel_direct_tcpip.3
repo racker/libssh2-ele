@@ -6,7 +6,8 @@ libssh2_channel_direct_tcpip - convenience macro for \fIlibssh2_channel_direct_t
 .SH SYNOPSIS
 #include <libssh2.h>
 
-libssh2_channel_direct_tcpip(arguments)
+LIBSSH2_CHANNEL *
+libssh2_channel_direct_tcpip(LIBSSH2_SESSION *session, const char *host, int port);
 
 .SH DESCRIPTION
 This is a macro defined in a public libssh2 header file that is using the
@@ -16,4 +17,4 @@ See \fIlibssh2_channel_direct_tcpip_ex(3)\fP
 .SH ERRORS
 See \fIlibssh2_channel_direct_tcpip_ex(3)\fP
 .SH SEE ALSO
-.BR \fIlibssh2_channel_direct_tcpip_ex(3)\fP
+.BR libssh2_channel_direct_tcpip_ex(3)
