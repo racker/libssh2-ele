@@ -1,9 +1,9 @@
 #########################################################################
 #
 ## Makefile for building libssh2 samples (Win32 version - gnu make)
-## Use: make -f Makefile.mingw [help]
+## Use: make -f GNUmakefile [help]
 ##
-## Comments to: Guenter Knauf http://www.gknw.net/phpbb
+## Hacked by: Guenter Knauf
 #
 #########################################################################
 
@@ -26,11 +26,12 @@ endif
 LINK_STATIC = 1
 
 # Edit the vars below to change target settings.
-TARGETS	= scp.exe sftp.exe sftpdir.exe ssh2.exe
+SAMPLES	= ../../example
+TARGETS := $(filter-out x11.exe,$(patsubst $(SAMPLES)/%.c,%.exe,$(strip $(wildcard $(SAMPLES)/*.c))))
 VERSION	= $(LIBSSH2_VERSION)
 COPYR   = (c) $(LIBSSH2_COPYRIGHT_STR)
 WWWURL	= http://www.libssh2.org/
-DESCR	= libssh2 $(subst .def,,$(notdir $@)) $(LIBSSH2_VERSION_STR)
+DESCR	= libssh2 $(subst .rc,,$(notdir $@)) $(LIBSSH2_VERSION_STR)
 #STACK	= 64000
 
 # must be equal to DEBUG or NDEBUG
@@ -76,19 +77,12 @@ ifdef METROWERKS
 else
 	CC = $(CROSSPREFIX)gcc
 endif
-CP	= cp -afv
-# RM	= rm -f
-# Here you can find a native Win32 binary of the original awk:
-# http://www.gknw.net/development/prgtools/awk-20070501.zip
-AWK	= awk
-ZIP	= zip -qzr9
 
 # Global flags for all compilers
 CFLAGS	= $(OPT) -D$(DB) -DWIN32 -DLIBSSH2_WIN32 # -DHAVE_CONFIG_H
 ifeq ($(ARCH),w64)
 CFLAGS  += -D_AMD64_
 endif
-CFLAGS	+= -DWINSOCK_VERSION=MAKEWORD(2,0)
 
 ifeq ($(CC),mwcc)
 LD	= mwld
@@ -178,7 +172,7 @@ $(OBJDIR)/%.res: $(OBJDIR)/%.rc
 	@echo Creating $@
 	@$(RC) $(RCFLAGS) $< -o $@
 
-$(OBJDIR)/%.rc: Makefile.win32 $(OBJDIR)/version.inc
+$(OBJDIR)/%.rc: GNUmakefile $(OBJDIR)/version.inc
 	@echo $(DL)1 VERSIONINFO$(DL) > $@
 	@echo $(DL) FILEVERSION $(LIBSSH2_VERSION),0$(DL) >> $@
 	@echo $(DL) PRODUCTVERSION $(LIBSSH2_VERSION),0$(DL) >> $@

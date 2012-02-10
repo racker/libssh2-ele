@@ -1,6 +1,4 @@
 /*
- * $Id: sftp_write_nonblock.c,v 1.14 2009/04/28 10:35:30 bagder Exp $
- *
  * Sample showing how to do SFTP non-blocking write transfers.
  *
  * The sample code has default values for host name, user name, password
@@ -84,9 +82,6 @@ int main(int argc, char *argv[])
     const char *loclfile="sftp_write_nonblock.c";
     const char *sftppath="/tmp/sftp_write_nonblock.c";
     int rc;
-#if defined(HAVE_IOCTLSOCKET)
-    long flag = 1;
-#endif
     FILE *local;
     LIBSSH2_SFTP *sftp_session;
     LIBSSH2_SFTP_HANDLE *sftp_handle;
@@ -161,7 +156,7 @@ int main(int argc, char *argv[])
     /* ... start it up. This will trade welcome banners, exchange keys,
         * and setup crypto, compression, and MAC layers
         */
-    while ((rc = libssh2_session_startup(session, sock))
+    while ((rc = libssh2_session_handshake(session, sock))
            == LIBSSH2_ERROR_EAGAIN);
     if (rc) {
         fprintf(stderr, "Failure establishing SSH session: %d\n", rc);

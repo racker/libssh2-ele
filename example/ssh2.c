@@ -1,6 +1,4 @@
 /*
- * $Id: ssh2.c,v 1.19 2009/04/28 10:35:30 bagder Exp $
- *
  * Sample showing how to do SSH2 connect.
  *
  * The sample code has default values for host name, user name, password
@@ -117,7 +115,7 @@ int main(int argc, char *argv[])
      * banners, exchange keys, and setup crypto, compression, and MAC layers
      */
     session = libssh2_session_init();
-    if (libssh2_session_startup(session, sock)) {
+    if (libssh2_session_handshake(session, sock)) {
         fprintf(stderr, "Failure establishing SSH session\n");
         return -1;
     }

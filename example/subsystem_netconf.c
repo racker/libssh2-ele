@@ -61,8 +61,9 @@ static int netconf_write(LIBSSH2_CHANNEL *channel, const char *buf, size_t len)
 static int netconf_read_until(LIBSSH2_CHANNEL *channel, const char *endtag,
                               char *buf, size_t buflen)
 {
-    ssize_t len, rd = 0;
-    char *endreply, *specialsequence = NULL;
+    ssize_t len;
+    size_t rd = 0;
+    char *endreply = NULL, *specialsequence = NULL;
 
     memset(buf, 0, buflen);
 
@@ -71,7 +72,7 @@ static int netconf_read_until(LIBSSH2_CHANNEL *channel, const char *endtag,
         if (LIBSSH2_ERROR_EAGAIN == len)
             continue;
         else if (len < 0) {
-            fprintf(stderr, "libssh2_channel_read: %d", (int)len);
+            fprintf(stderr, "libssh2_channel_read: %d\n", (int)len);
             return -1;
         }
         rd += len;
@@ -85,7 +86,12 @@ static int netconf_read_until(LIBSSH2_CHANNEL *channel, const char *endtag,
         if (endreply)
             specialsequence = strstr(endreply, "]]>]]>");
 
-    } while (!endreply || !specialsequence);
+    } while (!specialsequence && rd < buflen);
+
+    if (!specialsequence) {
+        fprintf(stderr, "%s: ]]>]]> not found! read buffer too small?\n", __func__);
+        return -1;
+    }
 
     /* discard the special sequence so that only XML is returned */
     rd = specialsequence - buf;
@@ -148,7 +154,7 @@ int main(int argc, char *argv[])
     /* ... start it up. This will trade welcome banners, exchange keys,
      * and setup crypto, compression, and MAC layers
      */
-    rc = libssh2_session_startup(session, sock);
+    rc = libssh2_session_handshake(session, sock);
     if(rc) {
         fprintf(stderr, "Error when starting up SSH session: %d\n", rc);
         return -1;
@@ -225,7 +231,7 @@ int main(int argc, char *argv[])
       "<capability>urn:ietf:params:xml:ns:netconf:base:1.0</capability>"
       "</capabilities>"
       "</hello>\n"
-      "]]>]]>\n%n", &len);
+      "]]>]]>\n%n", (int *)&len);
     if (-1 == netconf_write(channel, buf, len))
         goto shutdown;
 
@@ -234,7 +240,7 @@ int main(int argc, char *argv[])
     if (-1 == len)
         goto shutdown;
 
-    printf("Got %d bytes:\n----------------------\n%s", len, buf);
+    printf("Got %d bytes:\n----------------------\n%s", (int)len, buf);
 
     printf("Sending NETCONF <rpc>\n");
     snprintf(buf, sizeof(buf),
@@ -242,7 +248,7 @@ int main(int argc, char *argv[])
       "<rpc xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\">"
       "<get-interface-information><terse/></get-interface-information>"
       "</rpc>\n"
-      "]]>]]>\n%n", &len);
+      "]]>]]>\n%n", (int *)&len);
     if (-1 == netconf_write(channel, buf, len))
         goto shutdown;
 
@@ -251,7 +257,7 @@ int main(int argc, char *argv[])
     if (-1 == len)
         goto shutdown;
 
-    printf("Got %d bytes:\n----------------------\n%s", len, buf);
+    printf("Got %d bytes:\n----------------------\n%s", (int)len, buf);
 
 shutdown:
     if (channel)

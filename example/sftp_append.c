@@ -1,6 +1,4 @@
 /*
- * $Id: sftp_write.c,v 1.11 2009/04/28 10:35:30 bagder Exp $
- *
  * Sample showing how to do SFTP append of a local file onto a remote one.
  *
  * The sample code has default values for host name, user name, password
@@ -119,7 +117,7 @@ int main(int argc, char *argv[])
     /* ... start it up. This will trade welcome banners, exchange keys,
      * and setup crypto, compression, and MAC layers
      */
-    rc = libssh2_session_startup(session, sock);
+    rc = libssh2_session_handshake(session, sock);
     if(rc) {
         fprintf(stderr, "Failure establishing SSH session: %d\n", rc);
         return -1;
