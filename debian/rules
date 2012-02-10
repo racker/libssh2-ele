@@ -65,7 +65,7 @@ endif
 	CFLAGS="$(CFLAGS)" ./configure --host=$(DEB_HOST_GNU_TYPE) \
 		--build=$(DEB_BUILD_GNU_TYPE) \
 		--prefix=/usr \
-		--with-libgcrypt
+		--with-openssl
 
 build: build-stamp
 build-stamp: config.status
