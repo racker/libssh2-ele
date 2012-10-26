@@ -1,4 +1,4 @@
-usr/include/*
-usr/lib/*.a
-usr/lib/*.so
-usr/lib/pkgconfig/*.pc
+opt/libssh2-ele/include/*
+opt/libssh2-ele/lib/*.a
+opt/libssh2-ele/lib/*.so
+opt/libssh2-ele/lib/pkgconfig/*.pc
