@@ -64,8 +64,9 @@ endif
 
 	CFLAGS="$(CFLAGS)" ./configure --host=$(DEB_HOST_GNU_TYPE) \
 		--build=$(DEB_BUILD_GNU_TYPE) \
-		--prefix=/usr \
-		--with-openssl
+		--prefix=/opt/libssh2-ele \
+		--with-openssl \
+		--with-libssl-prefix=/opt/openssl-ele
 
 build: build-stamp
 build-stamp: config.status
@@ -98,7 +99,7 @@ binary-arch: build install
 	dh_fixperms
 	dh_makeshlibs
 	dh_installdeb
-	dh_shlibdeps
+	dh_shlibdeps -plibssl
 	dh_gencontrol
 	dh_md5sums
 	dh_builddeb
