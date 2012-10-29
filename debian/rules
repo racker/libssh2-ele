@@ -94,7 +94,7 @@ binary-arch: build install
 	dh_installman
 	dh_install --sourcedir=debian/tmp
 	dh_link
-	dh_strip --dbg-package=libssh2-1-dbg
+	dh_strip --dbg-package=libssh2-1-ele-dbg
 	dh_compress
 	dh_fixperms
 	dh_makeshlibs

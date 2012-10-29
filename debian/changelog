@@ -1,4 +1,4 @@
-libssh2 (1.4.0-1) unstable; urgency=low
+libssh2-ele (1.4.0-1) unstable; urgency=low
   
   [ Dan Di Spaltro ]
   * Update to 1.4.0
@@ -6,29 +6,29 @@ libssh2 (1.4.0-1) unstable; urgency=low
 
  -- Brandon Philips <brandon.philips@rackspace.com>  Fri, 10 Feb 2012 10:40:29 -0800
 
-libssh2 (1.3.0-1) unstable; urgency=low
+libssh2-ele (1.3.0-1) unstable; urgency=low
 
   * New upstream release
 
  -- Brandon Philips <brandon.philips@rackspace.com>  Wed, 19 Oct 2011 18:20:19 +0000
 
-libssh2 (1.2.8-1) unstable; urgency=low
+libssh2-ele (1.2.8-1) unstable; urgency=low
 
   * New upstream release.
 
  -- Mikhail Gusarov <dottedmag@debian.org>  Sat, 09 Apr 2011 16:20:20 +0200
 
-libssh2 (1.2.7-1) unstable; urgency=low
+libssh2-ele (1.2.7-1) unstable; urgency=low
 
   * New upstream release.
   * Bump Standards-Version, no changes needed.
 
  -- Mikhail Gusarov <dottedmag@debian.org>  Mon, 28 Mar 2011 21:03:51 +0200
 
-libssh2 (1.2.6-1) unstable; urgency=low
+libssh2-ele (1.2.6-1) unstable; urgency=low
 
   * New upstream release.
-    - Update symbols file. libssh2_error and libssh2_kex_exchange symbols
+    - Update symbols file. libssh2-ele_error and libssh2-ele_kex_exchange symbols
       were unexported, being private.
   * Simplify package description (Closes: #580325).
   * Update Maintainer field to use my @debian.org address.
@@ -36,7 +36,7 @@ libssh2 (1.2.6-1) unstable; urgency=low
 
  -- Mikhail Gusarov <dottedmag@debian.org>  Thu, 10 Jun 2010 17:33:32 +0700
 
-libssh2 (1.2.5-1) unstable; urgency=low
+libssh2-ele (1.2.5-1) unstable; urgency=low
 
   * New upstream release.
     - Update symbols file.
@@ -45,7 +45,7 @@ libssh2 (1.2.5-1) unstable; urgency=low
 
  -- Mikhail Gusarov <dottedmag@dottedmag.net>  Thu, 01 Apr 2010 21:46:07 +0700
 
-libssh2 (1.2.4-1) unstable; urgency=low
+libssh2-ele (1.2.4-1) unstable; urgency=low
 
   * New upstream release.
     - Adjust list of files to stash before build and to restore later.
@@ -53,7 +53,7 @@ libssh2 (1.2.4-1) unstable; urgency=low
 
  -- Mikhail Gusarov <dottedmag@dottedmag.net>  Sun, 28 Feb 2010 13:11:14 +0600
 
-libssh2 (1.2.2-1) unstable; urgency=low
+libssh2-ele (1.2.2-1) unstable; urgency=low
   
   * New upstream release.
 
@@ -69,13 +69,13 @@ libssh2 (1.2.2-1) unstable; urgency=low
 
  -- Mikhail Gusarov <dottedmag@dottedmag.net>  Sun, 29 Nov 2009 18:45:58 +0600
 
-libssh2 (1.2.1-2) unstable; urgency=low
+libssh2-ele (1.2.1-2) unstable; urgency=low
 
-  * Install libssh2.pc (Closes: #554437)
+  * Install libssh2-ele.pc (Closes: #554437)
 
  -- Mikhail Gusarov <dottedmag@dottedmag.net>  Wed, 04 Nov 2009 23:48:29 +0600
 
-libssh2 (1.2.1-1) unstable; urgency=low
+libssh2-ele (1.2.1-1) unstable; urgency=low
 
   * debian/watch:
     - update to match changed upstream download location.
@@ -88,29 +88,29 @@ libssh2 (1.2.1-1) unstable; urgency=low
 
  -- Mikhail Gusarov <dottedmag@dottedmag.net>  Mon, 28 Sep 2009 19:10:36 +0700
 
-libssh2 (1.2-1) unstable; urgency=low
+libssh2-ele (1.2-1) unstable; urgency=low
 
   * New upstream release.
-    - updated debian/libssh2-1.symbols.
+    - updated debian/libssh2-ele-1.symbols.
   * debian/rules: config.sub, config.guess, ChangeLog and
-    win32/libssh2.dsp from tarball are preserved, due to being deleted by
+    win32/libssh2-ele.dsp from tarball are preserved, due to being deleted by
     `make distclean'.
   * Standards-Version updated to 3.8.2, no changes required.
 
  -- Mikhail Gusarov <dottedmag@dottedmag.net>  Thu, 13 Aug 2009 02:28:57 +0700
 
-libssh2 (1.1-1) unstable; urgency=low
+libssh2-ele (1.1-1) unstable; urgency=low
 
   * New upstream release.
     - Dropped unexport-private-symbols.patch, applied upstream.
     - Dropped fix_manpage.patch, applied upstream.
     - Lots of private symbols were un-exported, adjusting
-      libssh2-1.symbols
+      libssh2-ele-1.symbols
   * Updating Standards-Version to 3.8.1, no changes required.
 
  -- Mikhail Gusarov <dottedmag@dottedmag.net>  Thu, 02 Apr 2009 16:20:42 +0700
 
-libssh2 (1.0-1) unstable; urgency=low
+libssh2-ele (1.0-1) unstable; urgency=low
 
   * New upstream release (Closes: #514225).
   * Replaced fix_manpage.patch with new set of manpages' fixes.
@@ -118,8 +118,8 @@ libssh2 (1.0-1) unstable; urgency=low
     - added description, as suggested by Lintian,
     - refreshed.
   * debian/patches/unexport-private-symbols.patch:
-    - new patch, disabling export of _libssh2_* private symbols.
-  * debian/libssh2-1.symbols:
+    - new patch, disabling export of _libssh2-ele_* private symbols.
+  * debian/libssh2-ele-1.symbols:
     - added symbols file.
   * debian/control:
     - removed duplicate Section: libs from binary package,
@@ -134,7 +134,7 @@ libssh2 (1.0-1) unstable; urgency=low
 
  -- Mikhail Gusarov <dottedmag@dottedmag.net>  Tue, 17 Feb 2009 22:50:14 +0600
 
-libssh2 (0.18-1) unstable; urgency=low
+libssh2-ele (0.18-1) unstable; urgency=low
 
   * New upstream release
     - Removed 'CVS directories in tarball' lintian override.
@@ -143,7 +143,7 @@ libssh2 (0.18-1) unstable; urgency=low
 
  -- Mikhail Gusarov <dottedmag@dottedmag.net>  Sun, 11 Nov 2007 17:16:34 +0600
 
-libssh2 (0.17-1) unstable; urgency=low
+libssh2-ele (0.17-1) unstable; urgency=low
 
   * New upstream release (Closes: #409362, #430569):
     * ABI change: soname changed (adding Conflicts and Replaces to new
@@ -160,7 +160,7 @@ libssh2 (0.17-1) unstable; urgency=low
 
  -- Mikhail Gusarov <dottedmag@dottedmag.net>  Wed, 04 Jul 2007 15:21:46 +0700
 
-libssh2 (0.14+20070102-1) unstable; urgency=low
+libssh2-ele (0.14+20070102-1) unstable; urgency=low
 
   * Initial release (Closes: #403446).
 
