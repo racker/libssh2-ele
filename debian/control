@@ -7,7 +7,7 @@ Standards-Version: 3.9.1
 
 Package: libssh2-1-ele
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: openssl-ele ${shlibs:Depends}, ${misc:Depends}
 Description: SSH2 client-side library
  libssh2 is a client-side C library implementing the SSH2 protocol.
  It supports regular terminal, SCP and SFTP sessions; port forwarding;
