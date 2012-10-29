@@ -1,11 +1,11 @@
-Source: libssh2
+Source: libssh2-ele
 Section: libs
 Priority: optional
 Maintainer: Mikhail Gusarov <dottedmag@debian.org>
 Build-Depends: debhelper (>= 7), autotools-dev, automake, libtool, openssl-ele, zlib1g-dev
 Standards-Version: 3.9.1
 
-Package: libssh2-1
+Package: libssh2-1-ele
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: SSH2 client-side library
@@ -15,12 +15,12 @@ Description: SSH2 client-side library
  .
  This package contains the runtime library.
 
-Package: libssh2-1-dev
+Package: libssh2-1-ele-dev
 Conflicts: libssh2-0-dev
 Replaces: libssh2-0-dev
 Section: libdevel
 Architecture: any
-Depends: libssh2-1 (= ${binary:Version}), ${misc:Depends}
+Depends: libssh2-1-ele (= ${binary:Version}), ${misc:Depends}
 Description: SSH2 client-side library (development headers)
  libssh2 is a client-side C library implementing the SSH2 protocol.
  It supports regular terminal, SCP and SFTP sessions; port forwarding;
@@ -28,11 +28,11 @@ Description: SSH2 client-side library (development headers)
  .
  This package contains the development files.
 
-Package: libssh2-1-dbg
+Package: libssh2-1-ele-dbg
 Section: debug
 Priority: extra
 Architecture: any
-Depends: libssh2-1 (= ${binary:Version}), libssh2-1-dev (= ${binary:Version}), ${misc:Depends}
+Depends: libssh2-1-ele (= ${binary:Version}), libssh2-1-ele-dev (= ${binary:Version}), ${misc:Depends}
 Description: SSH2 client-side library (debug package)
  libssh2 is a client-side C library implementing the SSH2 protocol.
  It supports regular terminal, SCP and SFTP sessions; port forwarding;
